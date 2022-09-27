@@ -1,0 +1,11 @@
+@import '../../index.module.scss';
+
+.button{
+    color: $color;
+    border: 1px solid white;
+    background: transparent;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,62 @@
+.Card {
+  padding: 1rem;
+  text-align: left;
+  color: inherit;
+  width: 280px;
+  height: 230px;
+  max-width: 280px;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #2d3436;
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+
+  .content{
+    height: 150px;
+    overflow: auto;
+  }
+
+  .content::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+  }
+  
+  .content::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  
+  .content::-webkit-scrollbar-thumb {
+    background-color: white;    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 1px solid white;  /* creates padding around scroll thumb */
+  }
+
+  &__actions{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+
+    &__heart {
+      cursor: pointer;
+    }
+  
+    &__edit {
+      cursor: pointer;
+    }
+
+    &__delete {
+      cursor: pointer;
+    }
+  }
+
+
+  h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}

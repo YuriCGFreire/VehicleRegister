@@ -1,0 +1,62 @@
+@import '../../styles/break-points.scss';
+
+.Vehicles {
+  display: grid;
+  padding: 1rem 2rem;
+  
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    .add_search{
+      align-self: center;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .add_filter{
+      display: flex;
+      justify-content: space-between;
+      
+      .filter{
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+    }
+    
+
+    @include desktop {
+      .add_search{
+        align-self: center;
+        width: 500px;
+        margin-bottom: 2rem;
+      }
+    } 
+
+    
+    .cards {
+
+      .favoriteVehicles {
+        display: flex;
+        overflow: auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .notFavoriteVehicles {
+        display: flex;
+        overflow: auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .card{
+        margin-bottom: 2rem;
+        height: 100%;
+      }
+    }
+  }
+  
+}

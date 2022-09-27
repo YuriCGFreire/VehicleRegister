@@ -1,0 +1,17 @@
+{
+    "name": {
+        "required": "Name is a required field"
+    },
+    "plate": {
+        "matches": "It's an invalid plate"
+    },
+    "year": {
+        "required": "Year is a required field"
+    }, 
+    "color": {
+        "required": "Color is a required field"
+    }, 
+    "price": {
+        "required": "Price is a required field"
+    }
+}
