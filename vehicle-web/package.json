@@ -1,5 +1,5 @@
 {
-  "name": "corelab-web-challenge",
+  "name": "vehicle-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:docker": "npm install && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,17 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
-    ]
-  },
-  "engines": {
-    "node": "^16.15.0",
-    "npm": "^8.5.5"
-  },
-  "devDependencies": {
-    "@types/react-modal": "^3.13.1"
   }
 }
