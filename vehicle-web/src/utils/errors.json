@@ -3,7 +3,7 @@
         "required": "Name is a required field"
     },
     "plate": {
-        "matches": "It's an invalid plate"
+        "matches": "It's an invalid plate. Type in format AAA0000"
     },
     "year": {
         "required": "Year is a required field"

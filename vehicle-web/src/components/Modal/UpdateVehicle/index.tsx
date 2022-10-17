@@ -95,7 +95,7 @@ const ModalUpdateVehicle = (props: ModalProps) => {
                                     <label htmlFor="plate">Plate</label>
                                     {errors?.plate?.type && <InputError msg={errors.plate?.message} />}
                                 </div>
-                                <input className={styles.modalContent__input} type="text" id='plate' {...register('plate')} placeholder="AAA-0000"/>
+                                <input className={styles.modalContent__input} type="text" id='plate' {...register('plate')} placeholder="AAA0000"/>
                             </div>
                             <div >
                                 <div className={styles.modalContent__label__error}>
