@@ -22,43 +22,46 @@
 
 ## Escopo do projeto
 
-O *TodoApp* é um projeto para fins ditáticos, aprendizado de Reactjs e Docker. Consiste em um simples CRUD de tasks, o qual você pode criar,
-atualizar, exlcuir e concluir as tasks.
+O *Vehicle Register* é um projeto para cadastro de carros, nele é possível incluir, exlcuir e atualizar um veículo. No filtro de buscar, os veículos serão filtrados por qualquer informação que for digitada, seja a placa, valor ou ano do carro e também é possível favoritar os veículos. O projeto frontend é feito com reactjs e SASS, o backend é utilizado nodejs (nestjs) e o banco de dados postgresql.
 
 <br>
 
-## Como rodar a aplicação
+## Configuração e como rodar o projeto
 
-- Se você possui docker instalado, basta abrir o terminal na pasta do projeto (TODOAPP) e rodar o comando 
-docker-compose up. Será feita a instalação das dependencias, inicialização do projeto e após isso o frontendo do projeto irá rodar na porta 3000.
-
-- Se não possui o docker instalado. Abra o terminal na pasta todo-app-api e rode o comando :
+### Configuração do arquivo .env
+- Primeiro precisando configurar o arquivo ".env". Crie um arquivo ".env" na pasta vehicle-api com as seguintes variáveis e valores caso tenha docker instalado na sua máquina:  
 
 ```
-npm i
+TYPEORM_CONNECTION=postgres
+TYPEORM_HOST=database
+TYPEORM_PORT=5432
+TYPEORM_USERNAME=postgres
+TYPEORM_PASSWORD=123456789
 ```
-Será feita a instalação das dependencias e depois rode o comando 
+Caso não possua o docker, criar um arquivo .env, com as mesmas variáveis, mas com os valores que serão necessários para a api se conectar com o seu banco de dados. 
 
+Ex.:
+``` 
+TYPEORM_CONNECTION=postgres (essa variável deverá ter esse valor)
+TYPEORM_HOST=ip_da_maquina_onde_está_rodando_o_db
+TYPEORM_PORT=porta_do_seu_banco_de_dados
+TYPEORM_USERNAME=user_name_do_seu_banco_de_dados
+TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 ```
-npm run start:dev
-```
+**Obs1: Na variável TYPEORM_HOST se você for rodar o projeto em uma máquina local, você pode colocar apenas "localhost".**
+**Obs2: Projeto desenvolvido com Postgresql, para isso precisa ser um DB Postgresql.**
 
-Em seguida abra a pasta web-todo-app e rode o comando: 
 
-```
-npm i
-```
+### Rodando o projeto
+- Se você possui docker instalado, basta abrir o terminal na pasta do backend do projeto (vehicle-api) e rodar o comando docker-compose up, será feita a instalação das dependencias e inicialização do backend. Após isso você deve abrir o terminal na pasta do frontendo do projeto (vehicle-web) rodar o comando "npm i" para instalar as dependências e depois o comando "npm start" para rodar o frontend, que irá rodar na porta 3000. 
 
-Será feita a instalação das dependencias e depois rode o comando 
+- Se não possuir o docker instalado. Abra o terminal na pasta vehicle-api e rode o comando "npm i" para instalar as dependencias e depois o comando "npm run start:dev" 
 
-```
-npm start
-```
-Logo após isso, basta conferir o projeto na sua porta local 3000.
+Em seguida crie um arquivo ".env" na pasta vehicle-api com as seguintes variáveis.
 ##
 
 ## Backend
-A documentação do backend foi feita com swagger e para conferir basta, rodar a api e acessar o endpoint [3003/api](http://localhost:3003/api/)
+
 
 ## Frontend
 
