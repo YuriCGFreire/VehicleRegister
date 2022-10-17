@@ -1,0 +1,64 @@
+@import '../../../styles/break-points.scss';
+@import '../../../index.module.scss';
+
+.Modal {
+    position: absolute;
+    height: 30%;
+    width: 70%;
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    background-color: #192a56;
+    border: 1px solid white;
+    border-radius: 5px;
+
+}
+
+@include desktop {
+    .Modal {
+        width: 18%;
+    }
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_container {
+    &__content{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__span{
+        font-size: 30px;
+        margin-bottom: 25%;
+    }
+
+    &__buttons{
+     display: flex;  
+     justify-content: space-between; 
+    }
+ 
+    &__delete_button, &__cancel_button{
+        color: $color;
+        border: 1px solid white;
+        background: transparent;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    &__delete_button {
+        background-color: #d63031;
+    }
+}

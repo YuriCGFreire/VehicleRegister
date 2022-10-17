@@ -10,9 +10,10 @@ Modal.setAppElement("#root")
 
 const VehiclesPage = () => {
   const { vehicles, handleIsOpenAddModal } = useContext(VehicleContext)
-  const [search, setSearch] = useState<string>('');
+  const [search, setSearch] = useState<string>("");
   const [vehiclesData, setVehiclesData] = useState<IVehicle[]>(vehicles)
-
+  const data = vehiclesData.length > 0 && search ? vehiclesData : vehicles
+  
   const handleChange = (value:string) => {
     setSearch(value)
     filterVehicle(value.toLowerCase())
@@ -28,15 +29,16 @@ const VehiclesPage = () => {
           return vehicle[key]?.toString().toLowerCase().includes(search)
         })
       })
+      console.log(filteredVehicles)
       setVehiclesData(filteredVehicles)
     }
   }
-
+  
   return (
     <div className={styles.Vehicles}>
       <main className={styles.main}>
         <div className={styles.add_search}>
-          <Search value={search} onChange={e => handleChange(e.target.value)} />
+          <Search value={search} onChange={e => handleChange(e.target.value)}/>
           <div className={styles.add_filter}>
             <Button text="Add new vehicle" onClick={() => handleIsOpenAddModal()} />
           </div>
@@ -45,7 +47,7 @@ const VehiclesPage = () => {
         <div className={styles.cards}>
           <div className={styles.favoriteVehicles}>
             {
-              vehiclesData.map((vehicle:IVehicle) => {
+              data.map((vehicle:IVehicle) => {
                 if (vehicle.isFavorite) {
                   return (
                     <div className={styles.card} key={vehicle.id}>
@@ -63,7 +65,7 @@ const VehiclesPage = () => {
           </div>
           <div className={styles.notFavoriteVehicles}>
             {
-              vehiclesData.map((vehicle:IVehicle) => {
+              data.map((vehicle:IVehicle) => {
                 if (vehicle.isFavorite === false) {
                   return (
                     <div className={styles.card} key={vehicle.id}>

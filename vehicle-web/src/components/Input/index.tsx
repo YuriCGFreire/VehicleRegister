@@ -5,6 +5,7 @@ import styles from "./Input.module.scss"
 
 type InputVehicleProps<TFormValues extends FieldValues> = {
   value?: any;
+  mask?: string;
   type?: string;
   htmlFor?: string;
   text?: string;
@@ -16,7 +17,7 @@ type InputVehicleProps<TFormValues extends FieldValues> = {
   register?: UseFormRegister<TFormValues>;
 }
 
-const InputVehicle = <TFormValues extends Record<string, unknown>>({ placeholder, error, value, type, htmlFor, text, id, name, onChange, register }: InputVehicleProps<TFormValues>): JSX.Element => {
+const InputVehicle = <TFormValues extends Record<string, unknown>>({ mask, placeholder, error, value, type, htmlFor, text, id, name, onChange, register }: InputVehicleProps<TFormValues>): JSX.Element => {
   return (
     <div className='container'>
       <div className={styles.container__label__error}>

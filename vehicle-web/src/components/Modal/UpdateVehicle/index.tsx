@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect} from 'react'
 import Modal from 'react-modal'
 import * as yup from 'yup'
 import styles from "./Modal.module.scss"
@@ -11,6 +11,8 @@ import { plateBr, plateMercoSul } from '../../../utils/validations'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
+import { normalizePrice } from '../../../utils/masks'
+import { InputError } from '../../InputError'
  
 
 interface ModalProps {
@@ -28,23 +30,6 @@ const validationSchema = yup.object({
     price: yup.string().required("Price is a required field."),
     description: yup.string(),
 })
-
-const customStyles = {
-    overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)'
-    },
-    content: {
-        height: '85%',
-        width: '60%',
-        top: '50%',
-        bottom: 'auto',
-        left: '50%',
-        right: 'auto',
-        padding: '30px',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: '#192a56'
-    }
-}
 
 const ModalUpdateVehicle = (props: ModalProps) => {
     const { isOpenUpdateModal, selectedVehicle, updateVehicle} = useContext(VehicleContext)
@@ -69,36 +54,75 @@ const ModalUpdateVehicle = (props: ModalProps) => {
         toast.dark('Check the input fields and try again!')
     }
     
-    const {handleSubmit, register, formState: {errors}}  = useForm({
+    const {handleSubmit, register, formState: {errors}, watch, setValue}  = useForm({
         defaultValues: vehicle,
         resolver: yupResolver(validationSchema)
     })
 
+    const priceValue = watch('price')
+    useEffect(() => {
+        setValue('price', normalizePrice(priceValue))
+    }, [priceValue])
 
     return (
-        <div className={styles.modal}>
+        <div className={styles.modalContent}>
             <Modal
                 isOpen={isOpenUpdateModal}
                 onRequestClose={props.onClose}
-                style={customStyles}
+                className={styles.Modal}
+                overlayClassName={styles.Overlay}
             >
                 <button
                     type="button"
                     onClick={props.onClose}
-                    className={styles.modal__react__close}
+                    className={styles.modalContent__react__close}
                 >
                     <BsArrowLeft size={30} color='#ffffff' className={styles.modal__arrow__left} />
                 </button>
-                <div className={styles.modal__container}>
+                <div className={styles.modalContent__container}>
                     <h2>Update Vehicle</h2>
                     <form action={props.action} onSubmit={handleSubmit(handleUpdateVehicle, onError)}>
-                        <InputVehicle error={errors.name?.message} register={register} placeholder='Vehicle name' htmlFor='name' text='Name' id='name' name='name' type='text'/>
-                        <InputVehicle error={errors.plate?.message} register={register} placeholder='ABC-1234 or ABC1B34' htmlFor='plate' text='Plate' id='plate' name='plate' type='text'/>
-                        <InputVehicle error={errors.year?.message} register={register} placeholder='2022' htmlFor='year' text='Year' id='year' name='year' type='text'/>
-                        <InputVehicle error={errors.color?.message} register={register} placeholder='red' htmlFor='color' text='Color' id='color' name='color' type='color'/>
-                        <InputVehicle error={errors.price?.message} register={register} placeholder='R$ 0,000.00' htmlFor='price' text='Price' id='price' name='price' type='text'/>
-                        <label className={styles.container__label} htmlFor={'description'}>Description</label>
-                        <textarea {...register('description')} style={{resize: 'none'}} className={styles.modal__textArea} name="description" id="description"></textarea>
+                    <main className={styles.modalContent__form}>
+                            <div >
+                                <div className={styles.modalContent__label__error}>
+                                    <label htmlFor="name">Name</label>
+                                    {errors?.name?.type && <InputError msg={errors.name?.message} />}
+                                </div>
+                                <input className={styles.modalContent__input} type="text" id='name' {...register('name')} placeholder="Ex.: Lamborghini"/>
+                            </div>
+                            <div >
+                                <div className={styles.modalContent__label__error}>
+                                    <label htmlFor="plate">Plate</label>
+                                    {errors?.plate?.type && <InputError msg={errors.plate?.message} />}
+                                </div>
+                                <input className={styles.modalContent__input} type="text" id='plate' {...register('plate')} placeholder="AAA-0000"/>
+                            </div>
+                            <div >
+                                <div className={styles.modalContent__label__error}>
+                                    <label htmlFor="year">Year</label>
+                                    {errors?.year?.type && <InputError msg={errors.year?.message} />}
+                                </div>
+                                <input 
+                                 className={styles.modalContent__input} type="text" id='year' {...register('year')} placeholder="Ex.: 2022"/>
+                            </div>
+                            <div >
+                                <div className={styles.modalContent__label__error}>
+                                    <label htmlFor="color">Color</label>
+                                    {errors?.color?.type && <InputError msg={errors.color?.message} />}
+                                </div>
+                                <input className={styles.modalContent__input} type="color" id='color' {...register('color')}/>
+                            </div>
+                            <div>
+                                <div className={styles.modalContent__label__error}>
+                                    <label htmlFor="price">Price</label>
+                                    {errors?.price?.type && <InputError msg={errors.price?.message} />}
+                                </div>
+                                <input {...register('price')} className={styles.modalContent__input} id='price' placeholder="Ex.: R$ 0,000,000.0"  type="currency"/>
+                            </div>
+                            <div>
+                                <textarea className={styles.modalContent__textArea} style={{resize: 'none'}} id="description" {...register('description')}></textarea>
+                            </div>
+                        </main>
                         <Button text='Update' />
                     </form>
                 </div>

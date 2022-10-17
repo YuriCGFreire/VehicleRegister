@@ -1,6 +1,7 @@
-export const normalizePlate = (value: any | undefined) => {
+export function normalizePrice(value: string | undefined) {
     if(!value) return ''
-
     return value
-        .replace(/[A-Z]{3}[-][0-9]{4}/g, '$1-$2')
-} 
+        .replace(/\D/g, "")
+        .replace(/(\d)(\d{2})$/, "$1,$2")
+        .replace(/(?=(\d{3})+(\D))\B/g, ".")
+  }

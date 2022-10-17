@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { ModalAddVehicle, ModalUpdateVehicle } from "../components";
+import ConfirmModal from "../components/Modal/ConfirmModal";
 import { destroyVehicle, getVehicle, getVehicles, patchToFavorite, patchVehicle, postVehicle } from "../lib/api";
 import { IVehicle, VehicleContextProps } from "../types/Vehicle";
 import VehicleContext from "./VehicleContext";
@@ -11,6 +12,7 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
     const [selectedVehicle, setSelectedVehicle] = useState<IVehicle>({} as IVehicle)
     const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false)
     const [isOpenAddModal, setIsOpenAddModal] = useState(false)
+    const [isOpenConfirmModal, setIsOpenConfirmModal] = useState(false)
 
 
     useEffect(() => {
@@ -21,11 +23,20 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
         fetchVehicles()
     })
 
-    function handleSelectedVehicle(id?: string) {
+    function handleSelectedUpdateVehicle(id?: string) {
         const fetchVehicle = async () => {
             const payload = await getVehicle(id)
             setSelectedVehicle(payload)
             handleIsOpenUpdateModal()
+        }
+        fetchVehicle()
+    }
+
+    function handleSelectedDeleteVehicle(id?: string) {
+        const fetchVehicle = async () => {
+            const payload = await getVehicle(id)
+            setSelectedVehicle(payload)
+            handleIsOpenConfirmModal()
         }
         fetchVehicle()
     }
@@ -35,7 +46,7 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
             return await patchToFavorite(id)
         }
         fetchVehicleFavorite()
-        toast.dark('You just set your favorite vehicles', {onClose: () => setTimeout(() => window.location.reload(), 3000)})
+        toast.dark('You just set your favorite vehicles', { autoClose: 1000 })
     }
 
     function updateVehicle(data: IVehicle) {
@@ -43,15 +54,17 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
             return await patchVehicle({ ...data })
         }
         fetchUpdateVehicle()
-        toast.dark('Vehicle updated with success', {onClose: () => setTimeout(() => window.location.reload(), 3000)})
+        handleIsOpenUpdateModal()
+        toast.dark('Vehicle updated with success', { autoClose: 1000 })
     }
 
-    function deleteVehicle(id: string){
+    function deleteVehicle(id: string) {
         const fecthDeleteVehicle = async () => {
             return await destroyVehicle(id)
         }
         fecthDeleteVehicle()
-        toast.dark('Vehicle deleted with success', {onClose: () => setTimeout(() => window.location.reload(), 3000)})
+        handleIsOpenConfirmModal()
+        toast.dark('Vehicle deleted with success')
     }
 
     function createVehicle(data: IVehicle) {
@@ -59,7 +72,8 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
             return await postVehicle({ ...data })
         }
         fetchCreateVehicle()
-        toast.dark('Vehicle created with success', {onClose: () => setTimeout(() => window.location.reload(), 3000)})
+        handleIsOpenAddModal()
+        toast.dark('Vehicle created with success', { autoClose: 1000 })
     }
 
     function handleIsOpenUpdateModal() {
@@ -70,15 +84,22 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
         setIsOpenAddModal(!isOpenAddModal)
     }
 
+    function handleIsOpenConfirmModal() {
+        setIsOpenConfirmModal(!isOpenConfirmModal)
+    }
+
     return (
         <VehicleContext.Provider value={{
             vehicles,
             selectedVehicle,
-            handleSelectedVehicle,
+            handleSelectedUpdateVehicle,
+            handleSelectedDeleteVehicle,
             isOpenAddModal,
             isOpenUpdateModal,
+            isOpenConfirmModal,
             handleIsOpenAddModal,
             handleIsOpenUpdateModal,
+            handleIsOpenConfirmModal,
             updateVehicle,
             createVehicle,
             setFavorite,
@@ -93,11 +114,19 @@ const VehicleContextProvider = (props: VehicleContextProps) => {
                 )
             }
             {
+                isOpenConfirmModal && (
+                    <ConfirmModal
+                        onClose={handleIsOpenConfirmModal}
+                    />
+                )
+            }
+            {
                 isOpenAddModal && (
                     <ModalAddVehicle
                         onClose={handleIsOpenAddModal} />
                 )
             }
+
         </VehicleContext.Provider>
     )
 }

@@ -1,8 +1,38 @@
 @import '../../../styles/break-points.scss';
+@import '../../../index.module.scss';
 
+.Modal {
+    position: absolute;
+    height: 85%;
+    width: 60%;
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    background-color: #192a56;
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow: auto;
+}
 
-.modal{
-    height: 100vh;
+@include desktop {
+    .Modal {
+        width: 35%;
+    }
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent{
     width: 100%;
 
     &__arrow__left{
@@ -32,5 +62,28 @@
         padding: 3px;
         color: white;
         outline: none;
+    }
+
+    &__input{
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        width: 100%;
+        font-size: 16px;
+        padding: 3px;
+        color: white;
+        outline: none;
+        margin-bottom: 2rem;
+    }
+
+    @include desktop {
+        &__input{
+            width: 300px;
+        }
+    }
+
+    &__label__error{
+        display: flex;
+        flex-direction: column;
     }
 }

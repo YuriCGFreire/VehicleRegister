@@ -18,7 +18,8 @@ interface ICard {
 
 const Card = (props: ICard) => {
   
-  const {setFavorite, handleSelectedVehicle, deleteVehicle} = useContext(VehicleContext)
+  const {setFavorite, handleSelectedUpdateVehicle, handleSelectedDeleteVehicle} = useContext(VehicleContext)
+
   return (
     <div className={styles.Card} style={{borderBottom: `solid 10px ${props.colorVehicle}`}}>
       <div className={styles.Card__actions}>
@@ -29,8 +30,8 @@ const Card = (props: ICard) => {
             <AiOutlineHeart className={styles.Card__actions__heart} onClick={() => setFavorite(props.vehicleId)}/>
           )
         }
-        <FiEdit className={styles.Card__actions__edit}  onClick={() => handleSelectedVehicle(props.vehicleId)}/>
-        <MdOutlineDeleteOutline className={styles.Card__actions__delete} onClick={() => deleteVehicle(props.vehicleId)}/>
+        <FiEdit className={styles.Card__actions__edit}  onClick={() => handleSelectedUpdateVehicle(props.vehicleId)}/>
+        <MdOutlineDeleteOutline className={styles.Card__actions__delete} onClick={() => handleSelectedDeleteVehicle(props.vehicleId)}/>
       </div>
       <h2>{props.title}</h2>
       <div className={styles.content}>{props.children}</div>
