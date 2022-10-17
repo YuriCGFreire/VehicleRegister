@@ -1,0 +1,24 @@
+version: '2.0'
+
+services: 
+
+  api:
+    container_name: vehicle-api
+    build: ./
+    ports: 
+      - "3333:3333"
+    volumes: 
+      - .:/home/api
+      - /home/api/node_modules
+    depends_on:
+      - database
+
+  database: 
+    image: postgres:latest
+    container_name: vehicle-db
+    environment:
+      POSTGRES_DB: vehicle-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456789
+    ports:
+      - "5444:5432"
