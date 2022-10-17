@@ -12,8 +12,13 @@
 - TypeORM
 - UUID
 - React
+- ReactModal 
+- ReactHook Form
+- Yup
+- React Toastify
 - Html
 - CSS
+- SASS
 
 ## Escopo do projeto
 
