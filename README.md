@@ -212,16 +212,37 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 ## Frontend
 
 ### Home
-- Home onde serão listados os veículos
  
 <div align="center">
+  <p>
+    Home onde serão listados os veículos.
+  </p>
   <img src="https://user-images.githubusercontent.com/82773177/196513417-0e880a75-621e-4700-abf7-967cf5e6dfeb.jpg"/>
 <div>
 
 ### Adicionar um novo veículo
 <div align="center">
   <p>
-    Para adicionar, basta clicar no botão "Add new vehicle", um modal irá abrir com o formulário necessário para adicionar um veículo.
+    Para adicionar, basta clicar no botão "Add new vehicle", um modal irá abrir com o formulário necessário para adicionar um veículo. A cor inferior do card, se refere à cor do veículo.
   </p>
   <img src="https://user-images.githubusercontent.com/82773177/196513169-ac0fecfa-dd50-49a2-9a55-319ed26a58c9.jpg"/>
 <div>
+	
+### Favoritar um veículo
+<div align="center">
+  <p>
+    Para favoritar, você precisa clicar no coração que está no card do veículo e a aplicação irá separar os veículos favoritos e os não favoritos.
+  </p>
+  <img src="https://user-images.githubusercontent.com/82773177/196515651-2329790c-7e8c-403e-aac9-9846b4444ed8.jpg"/>
+<div>
+	
+### Atualizar dados de um veículo
+<div align="center">
+  <p>
+    Clique no ícone de caneta, irá abrir um modal com os campos preenchidos com as informações do veículo e a partir dai você escolhe qual informação quer alterar.
+  </p>
+  <img src="https://user-images.githubusercontent.com/82773177/196516108-4ae7c3b2-7685-4553-8017-ba59272cd5a3.jpg"/>
+<div>
+	
+### Excluir um veículo
+- Para excluir um veículo basta clicar na lata de lixo que se encontra no card do veículo
