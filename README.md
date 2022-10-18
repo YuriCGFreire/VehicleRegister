@@ -245,4 +245,4 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 <div>
 	
 ### Excluir um veículo
-- Para excluir um veículo basta clicar na lata de lixo que se encontra no card do veículo
+	<p>Para excluir um veículo basta clicar na lata de lixo que se encontra no card do veículo</p>
