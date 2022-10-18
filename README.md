@@ -211,7 +211,6 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 ## Frontend
 
 ### Home
-
 - Home onde serão listados os veículos 
 
 <div align="center">
@@ -223,26 +222,4 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/82773177/196513169-ac0fecfa-dd50-49a2-9a55-319ed26a58c9.jpg"/>
-<div>
-
-- Atualizar task:
-Para atualizar uma nova task, é preciso clicar na task, que irá abrir um modal onde você pode escrever no input a nova task
-clicar em atualizar ou clicar em cancelar, caso mude de ideia
-
-- Excluir task: 
-Ao clicar no icone de lixo ao lado da task você irá exclui-la
-
-- Concluir task: 
-Ao clicar na checkbox do lado esquerdo da task, você irá conclui-la
-
-## 
-<div align="center">
-  Home da aplicação, onde serão listados os veículos 
-  <img src="https://user-images.githubusercontent.com/82773177/196512301-739ddc66-e695-4ca7-9335-6163145e9ef7.jpg"/>
-<div>
-  
-##
-<div align="center">
-  Modal para atualizar task
-  <img src="https://user-images.githubusercontent.com/82773177/192564280-79d625d3-091e-4e05-9eb8-35afe3fafff2.jpg"/>
 <div>
