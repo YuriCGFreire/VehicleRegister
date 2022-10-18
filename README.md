@@ -56,12 +56,157 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 - Se você possui docker instalado, basta abrir o terminal na pasta do backend do projeto (vehicle-api) e rodar o comando docker-compose up, será feita a instalação das dependencias e inicialização do backend. Após isso você deve abrir o terminal na pasta do frontendo do projeto (vehicle-web) rodar o comando "npm i" para instalar as dependências e depois o comando "npm start" para rodar o frontend, que irá rodar na porta 3000. 
 
 - Se não possuir o docker instalado. Abra o terminal na pasta vehicle-api e rode o comando "npm i" para instalar as dependencias e depois o comando "npm run start:dev" 
-
-Em seguida crie um arquivo ".env" na pasta vehicle-api com as seguintes variáveis.
 ##
 
 ## Backend
 
+### POST /vehicles
+
+- Informações para salvar um veículo
+
+```json
+{
+	"name": "Voyage",
+	"description": "Descrição de um carro voyage",
+	"plate": "BKX-9607",
+	"year": "2020",
+	"color": "ff0000",
+	"price": "400.000,00",
+	"isFavorite": false
+}
+```
+
+- Resposta de veículo salvo com sucesso
+
+```json
+{
+	"id": "92700f38-29b0-49d1-a477-ae6699fcd6bb",
+	"name": "Voyage",
+	"description": "Descrição de um Voyage",
+	"plate": "BKX-9607",
+	"year": "2020",
+	"color": "ff0000",
+	"price": "400.000,00",
+	"isFavorite": false,
+	"deleted_at": null,
+	"created_at": "2022-10-18T15:53:48.324Z",
+	"updated_at": "2022-10-18T15:53:48.324Z"
+}
+```
+
+### GET - na rota /vehicles
+
+- Irá retornar uma array com todos os veículos cadastrados 
+
+```json
+[
+	{
+		"id": "92700f38-29b0-49d1-a477-ae6699fcd6bb",
+		"name": "Voyage",
+		"description": "Descrição de um Voyage",
+		"plate": "BKX-9607",
+		"year": "2020",
+		"color": "ff0000",
+		"price": "400.000,00",
+		"isFavorite": false,
+		"created_at": "2022-10-18T15:53:48.324Z",
+		"updated_at": "2022-10-18T15:53:48.324Z",
+		"deleted_at": null
+	},
+	{
+		"id": "e2600dba-8350-4cca-8f31-3e89f05ddb0c",
+		"name": "Lamborghini",
+		"description": "Descrição de uma Lamborghini",
+		"plate": "BKX-9609",
+		"year": "2020",
+		"color": "ff0000",
+		"price": "600.000,00",
+		"isFavorite": false,
+		"created_at": "2022-10-18T15:57:13.011Z",
+		"updated_at": "2022-10-18T16:00:16.387Z",
+		"deleted_at": null
+	}
+]
+```
+
+### GET - /vehicles/isfavorite
+
+- Irá retornar um array com os vehicles favoritos
+
+```json
+[
+	{
+		"id": "e2600dba-8350-4cca-8f31-3e89f05ddb0c",
+		"name": "Lamborghini",
+		"description": "Descrição de uma Lamborghini",
+		"plate": "BKX-9609",
+		"year": "2020",
+		"color": "ff0000",
+		"price": "600.000,00",
+		"isFavorite": true,
+		"created_at": "2022-10-18T15:57:13.011Z",
+		"updated_at": "2022-10-18T16:04:58.570Z",
+		"deleted_at": null
+	}
+]
+```
+
+### GET - /vehicles/:id
+
+- Irá retornar o veículo do ID que foi passado 
+
+```json
+{
+	"id": "92700f38-29b0-49d1-a477-ae6699fcd6bb",
+	"name": "Voyage",
+	"description": "Descrição de um Voyage",
+	"plate": "BKX-9607",
+	"year": "2020",
+	"color": "ff0000",
+	"price": "400.000,00",
+	"isFavorite": false,
+	"deleted_at": null,
+	"created_at": "2022-10-18T15:53:48.324Z",
+	"updated_at": "2022-10-18T15:53:48.324Z"
+}
+```
+
+### PATCH - /vehicles/:id
+
+- Rota responsável por atualizar algum dado de algum veículo, basta passar o id na rota e a informação que deseja alterar no corpo da requisição.
+- Informação que eu desejo altera, por exemplo a descrição do veículo
+
+```json
+{
+	"description": "Voyage seminovo"
+}
+```
+
+- Resposta
+
+```json
+{
+	"id": "92700f38-29b0-49d1-a477-ae6699fcd6bb",
+	"name": "voyage",
+	"description": "Voyage seminovo",
+	"plate": "BKX-9607",
+	"year": "2020",
+	"color": "ff0000",
+	"price": "400.000,00",
+	"isFavorite": false,
+	"created_at": "2022-10-18T15:53:48.324Z",
+	"updated_at": "2022-10-18T16:13:22.842Z",
+	"deleted_at": null
+}
+```
+
+### DELETE - /vehicles/:id
+
+- Para deletar o carro basta passar o id do veículo na rota 
+
+### PATCH - /vehicles/isfavorite/:id
+
+- Para setar um veículo como favorito, bastar passar o id do veículo na rota
 
 ## Frontend
 
