@@ -22,7 +22,7 @@
 
 ## Escopo do projeto
 
-O *Vehicle Register* é um projeto para cadastro de carros, nele é possível incluir, exlcuir e atualizar um veículo. No filtro de buscar, os veículos serão filtrados por qualquer informação que for digitada, seja a placa, valor ou ano do carro e também é possível favoritar os veículos. O projeto frontend é feito com reactjs e SASS, o backend é utilizado nodejs (nestjs) e o banco de dados postgresql.
+O *Vehicle Register* é um projeto totalmente responsivo para cadastro de carros, nele é possível incluir, exlcuir e atualizar um veículo. No filtro de buscar, os veículos serão filtrados por qualquer informação que for digitada, seja a placa, valor ou ano do carro e também é possível favoritar os veículos. O projeto frontend é feito com reactjs e SASS, o backend é utilizado nodejs (nestjs) e o banco de dados postgresql.
 
 <br>
 
@@ -210,8 +210,20 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 
 ## Frontend
 
-- Adicionar uma nova task:
-Basta digitar no input qual a nova task que você quer adicionar e depois clicar em adicionar
+### Home
+
+- Home onde serão listados os veículos 
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/82773177/196513417-0e880a75-621e-4700-abf7-967cf5e6dfeb.jpg"/>
+<div>
+
+### Adicionar um novo veículo
+- Para adicionar, basta clicar no botão "Add new vehicle", um modal irá abrir com o formulário necessário para adicionar um veículo.
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/82773177/196513169-ac0fecfa-dd50-49a2-9a55-319ed26a58c9.jpg"/>
+<div>
 
 - Atualizar task:
 Para atualizar uma nova task, é preciso clicar na task, que irá abrir um modal onde você pode escrever no input a nova task
@@ -223,10 +235,10 @@ Ao clicar no icone de lixo ao lado da task você irá exclui-la
 - Concluir task: 
 Ao clicar na checkbox do lado esquerdo da task, você irá conclui-la
 
-##
+## 
 <div align="center">
-  Home da aplicação, onde serão listadas as tasks 
-  <img src="https://user-images.githubusercontent.com/82773177/192562699-ab59e352-84d4-445a-983a-6346074b9226.jpg"/>
+  Home da aplicação, onde serão listados os veículos 
+  <img src="https://user-images.githubusercontent.com/82773177/196512301-739ddc66-e695-4ca7-9335-6163145e9ef7.jpg"/>
 <div>
   
 ##
