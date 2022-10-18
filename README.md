@@ -210,16 +210,18 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 ##
 
 ## Frontend
-### Home
-- Home onde serão listados os veículos 
 
+### Home
+- Home onde serão listados os veículos
+ 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/82773177/196513417-0e880a75-621e-4700-abf7-967cf5e6dfeb.jpg"/>
 <div>
 
 ### Adicionar um novo veículo
-- Para adicionar, basta clicar no botão "Add new vehicle", um modal irá abrir com o formulário necessário para adicionar um veículo.
-
 <div align="center">
+  <p>
+    Para adicionar, basta clicar no botão "Add new vehicle", um modal irá abrir com o formulário necessário para adicionar um veículo.
+  </p>
   <img src="https://user-images.githubusercontent.com/82773177/196513169-ac0fecfa-dd50-49a2-9a55-319ed26a58c9.jpg"/>
 <div>
