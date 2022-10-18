@@ -207,9 +207,9 @@ TYPEORM_PASSWORD=senha_do_seu_banco_de_dados
 ### PATCH - /vehicles/isfavorite/:id
 
 - Para setar um veículo como favorito, bastar passar o id do veículo na rota
+##
 
 ## Frontend
-
 ### Home
 - Home onde serão listados os veículos 
 
